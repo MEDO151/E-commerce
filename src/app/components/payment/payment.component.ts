@@ -20,15 +20,11 @@ export class PaymentComponent implements OnInit {
     city: new FormControl('' ,[Validators.required])
   })
 
-  lll:any = ''
 
   ngOnInit(): void {
     this._ActivatedRoute.paramMap.subscribe({
       next: (params) =>{
         this.cartId = params.get('id');
-        this.lll = params.get('baseUrl');
-        console.log(this.cartId, this.lll);
-        console.log(params);
       }
     })
   }

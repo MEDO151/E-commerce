@@ -23,7 +23,7 @@
       </div>
       <button [disabled]="!loginForm.valid" (click)="loginForm.markAllAsTouched()" class="btn-main text-capitalize mt-3">
         <i *ngIf="spinner" class="fa-solid fa-spinner fa-spin-pulse"></i>
-        register
+        login
       </button>
     </div>
     <p *ngIf="getError.length" class="alert alert-danger mt-2 w-75 mx-auto">{{getError}}</p>
