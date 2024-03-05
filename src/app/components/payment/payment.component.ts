@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { PaymentService } from 'src/app/shared/service/payment.service';
 
@@ -15,9 +15,9 @@ export class PaymentComponent implements OnInit {
 
 
   orderForm:FormGroup = new FormGroup({
-    details: new FormControl(''),
-    phone: new FormControl(''),
-    city: new FormControl('')
+    details: new FormControl('',[Validators.required]),
+    phone: new FormControl('' ,[Validators.required]),
+    city: new FormControl('' ,[Validators.required])
   })
 
   ngOnInit(): void {

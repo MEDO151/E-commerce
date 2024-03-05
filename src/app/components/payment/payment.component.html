@@ -3,17 +3,26 @@
   <form  class="w-75 mx-auto bg-light p-5 rounded-3" [formGroup]="orderForm" (ngSubmit)="handleForm()">
     <h1 class="fs-3 text-capitalize mb-5" >checkOut session</h1>
     <div class="my-3">
-      <label class="text-capitalize" for="details"> details </label>
+      <label class="text-capitalize"  for="details"> details </label>
       <input type="text" id="details" class="form-control" formControlName="details" >
+      <div *ngIf=" orderForm.get('details')?.errors && (orderForm.get('details')?.touched) " class="alert alert-danger mt-2">
+        <p *ngIf=" orderForm.get('details')?.getError('required')" class="mb-2">email is required</p>
+      </div>
     </div>
     <div class="mb-3">
       <label class="text-capitalize" for="phone"> phone </label>
       <input type="tel" id="phone" class="form-control" formControlName="phone" >
+      <div *ngIf=" orderForm.get('phone')?.errors && (orderForm.get('phone')?.touched) " class="alert alert-danger mt-2">
+        <p *ngIf=" orderForm.get('phone')?.getError('required')" class="mb-2">phone is required</p>
+      </div>
     </div>
     <div class="mb-3">
       <label class="text-capitalize" for="city"> city </label>
       <input type="text" id="city" class="form-control" formControlName="city" >
+      <div *ngIf=" orderForm.get('city')?.errors && (orderForm.get('city')?.touched) " class="alert alert-danger mt-2">
+        <p *ngIf=" orderForm.get('city')?.getError('required')" class="mb-2">city is required</p>
+      </div>
     </div>
-    <button class="btn-main mt-3" > pay now </button>
+    <button [disabled]="!orderForm.valid" class="btn-main mt-3" > pay now </button>
   </form>
 </section>

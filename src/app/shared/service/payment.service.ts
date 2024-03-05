@@ -13,7 +13,7 @@ export class PaymentService {
 
 
   ckeckout(cartId:any, details:any):Observable<any>{
-    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://http://localhost:4200`,
+    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=http://localhost:4200`,
     {
       shippingAddress: details
     },
@@ -24,5 +24,4 @@ export class PaymentService {
     }
     )
   }
-
 }
