@@ -1,0 +1,60 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary position-fixed start-0 end-0 top-0 z-3">
+  <div class="container-fluid">
+    <a class="navbar-brand" routerLink="home"><img src="./assets/images/freshcart-logo.svg" alt=""></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" routerLinkActive="active-link" routerLink="home">home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" routerLinkActive="active-link" routerLink="products">products</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" routerLinkActive="active-link" routerLink="categories">categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize" routerLinkActive="active-link" routerLink="brands">brands</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+
+        <li class="nav-item">
+          <a class="nav-link text-capitalize me-2 position-relative " routerLink="wishlist">
+            <i class="fa-solid fa-heart text-danger fs-2 "></i>
+            <span class="badge position-absolute top-0 end-0 bg-dark-subtle" > {{wishListNumber}} </span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-capitalize me-3 position-relative " routerLink="cart">
+            <i class="fa-solid fa-cart-shopping fs-2 text-main "></i>
+            <span class="badge position-absolute top-0 end-0 bg-dark-subtle" > {{cartNumber}} </span>
+          </a>
+        </li>
+        <li>
+          <a class="nav-link"><i class="fa-brands fa-instagram"></i></a>
+        </li>
+        <li>
+          <a class="nav-link"><i class="fa-brands fa-facebook"></i></a>
+        </li>
+        <li>
+          <a class="nav-link"><i class="fa-brands fa-tiktok"></i></a>
+        </li>
+        <li>
+          <a class="nav-link"><i class="fa-brands fa-twitter"></i></a>
+        </li>
+        <li>
+          <a class="nav-link"><i class="fa-brands fa-linkedin"></i></a>
+        </li>
+        <li>
+          <a class="nav-link"><i class="fa-brands fa-youtube"></i></a>
+        </li>
+        <li class="nav-item">
+          <span (click)="logOutUser()" class="nav-link text-capitalize cursor-pointer" >signOut</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,31 @@
+<section>
+  <form class="w-75 mx-auto" [formGroup]="loginForm" (ngSubmit)="handleLogin()" >
+    <h1 class="fs-3 text-capitalize">login now :</h1>
+    <div class="mb-2">
+      <label for="userEmail">email :</label>
+      <input #userEmail id="userEmail" type="email" class="form-control"   formControlName="email">
+      <div *ngIf=" loginForm.get('email')?.errors && (loginForm.get('email')?.touched || userEmail.value.length > 0 ) " class="alert alert-danger mt-2">
+        <p *ngIf=" loginForm.get('email')?.getError('required')" class="mb-2">email is required</p>
+        <p *ngIf=" loginForm.get('email')?.getError('email')" class="mb-2">email Invalid Format</p>
+      </div>
+    </div>
+    <div class="mb-2">
+      <label for="userPassword">password :</label>
+      <input #userPassword id="userPassword" type="password" class="form-control"  formControlName="password">
+      <div *ngIf=" loginForm.get('password')?.errors && (loginForm.get('password')?.touched || userPassword.value.length > 0 ) " class="alert alert-danger mt-2">
+        <p *ngIf=" loginForm.get('password')?.getError('required')" class="mb-2">password is required</p>
+        <p *ngIf=" loginForm.get('password')?.getError('pattern')" class="mb-2">password must start with upperCase then 6 or more characters</p>
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-between">
+      <div>
+        <h6 routerLink="/forget-password" class="cursor-pointer">forget your password ?</h6>
+      </div>
+      <button [disabled]="!loginForm.valid" (click)="loginForm.markAllAsTouched()" class="btn-main text-capitalize mt-3">
+        <i *ngIf="spinner" class="fa-solid fa-spinner fa-spin-pulse"></i>
+        register
+      </button>
+    </div>
+    <p *ngIf="getError.length" class="alert alert-danger mt-2 w-75 mx-auto">{{getError}}</p>
+  </form>
+</section>

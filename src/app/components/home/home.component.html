@@ -1,0 +1,58 @@
+<section class="pt-5">
+  <div class="row g-2 ">
+    <div class="col-md-9 ">
+      <owl-carousel-o [options]="sliderImg">
+        <ng-template carouselSlide><img src="./assets/images/main-slider-2.jpeg" class="w-100" height="450" alt=""></ng-template>
+        <ng-template carouselSlide><img src="./assets/images/main-slider-3.jpeg" class="w-100" height="450" alt=""></ng-template>
+        <ng-template carouselSlide><img src="./assets/images/blog-img-2.jpeg"  class="w-100" height="450" alt=""></ng-template>
+      </owl-carousel-o>
+    </div>
+    <div class="col-md-3 main-slider">
+      <img src="./assets/images/slide-1.jpeg" class="w-100" height="225"  alt="">
+      <img src="./assets/images/slide-2.jpeg" class="w-100"  height="225" alt="">
+    </div>
+  </div>
+</section>
+<section class="py-5">
+  <owl-carousel-o [options]="categoryImg">
+    <ng-container *ngFor="let itemImg of imgCategory">
+      <ng-template carouselSlide>
+        <img [src]="itemImg.image" height="180" [alt]="itemImg.title">
+      </ng-template>
+    </ng-container>
+  </owl-carousel-o>
+</section>
+<section class="py-3">
+  <input [(ngModel)]="searchValue" type="search" class="form-control w-50 mx-auto mb-3" placeholder="search...." >
+  <div class="row g-3">
+    <div class="col-lg-2 col-md-4" *ngFor="let product of products | slice:0:24 | search:searchValue ">
+      <div class="product position-relative"  >
+        <owl-carousel-o [options]="imgProduct">
+
+          <ng-container *ngFor="let item of product.images | slice:0:4">
+            <ng-template carouselSlide>
+              <div>
+                <img [src]="item" class="w-100 mb-2" [alt]="product.title" >
+              </div>
+            </ng-template>
+          </ng-container>
+
+        </owl-carousel-o>
+        <div class="cursor-pointer" [routerLink]="['/details' , product._id]">
+          <h4 class="text-main fs-small" >{{product.category.name}}</h4>
+          <h3 class="fs-small" >{{product.title | title:' ':0:2:' '  }}</h3>
+          <div class="d-flex align-items-center justify-content-between mt-2">
+            <span> {{product.price}} EGP</span>
+            <div class="d-flex mt-2">
+              <i class="fa-solid fa-star rating-color "></i>
+              <p class="text-muted fs-small m-0" >{{product.ratingsAverage}}</p>
+            </div>
+          </div>
+        </div>
+        <span *ngIf="!wishListData.includes(product._id)" (click)="addToWishlist(product._id)"  class="position-absolute heart" > <i class="fa-solid fa-heart fa-bounce fs-4 " ></i> </span>
+        <span *ngIf="wishListData.includes(product._id)" (click)="removeFromWishlist(product._id)"  class="position-absolute heart" > <i class="fa-solid fa-heart fa-bounce fs-4 text-danger " ></i> </span>
+        <button (click)="addToCart(product._id , AddToCart)"  #AddToCart class="btn-main text-capitalize mt-3 mx-auto d-block btn-add">add to cart <i class="fa-solid fa-cart-shopping"></i></button>
+      </div>
+    </div>
+  </div>
+</section>

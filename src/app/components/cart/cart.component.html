@@ -1,0 +1,46 @@
+<section class="py-5" *ngIf="productInCart.totalCartPrice>0;else msg">
+
+  <div class="row m-3 rounde bg-light rounded-3">
+    <div class="d-flex align-items-center justify-content-between" >
+      <div class="m-3">
+        <h1 class="text-capitalize">shop cart</h1>
+        <p class="text-main text-capitalize">total price : {{productInCart.totalCartPrice | currency:' '}} EGP </p>
+      </div>
+      <div>
+        <button (click)="clearAllCart()" class="btn btn-danger text-capitalize" > clear cart <i class="fa-solid fa-trash "></i> </button>
+      </div>
+    </div>
+    <div class="col-md-12 border-bottom" *ngFor="let item of productInCart.products">
+
+      <div class="row">
+        <div class="col-md-2">
+          <div class="p-3">
+            <img [src]="item.product.imageCover" class="w-100" [alt]="item.product.title">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="d-flex align-items-center justify-content-between h-100">
+            <div>
+              <h5>{{item.product.title}}</h5>
+              <p class="text-main text-capitalize m-0" > price : {{item.price | currency:' '}} EGP </p>
+              <button   (click)="deleteItem(item.product._id , btnDelete)" #btnDelete class="classic-btn text-capitalize text-danger" > <i class="fa-solid fa-trash "></i> delete</button>
+            </div>
+            <div>
+              <button class="btn-main" (click)="update(item.product._id , item.count +1 )" > + </button>
+              <span> {{item.count}} </span>
+              <button class="btn-main" (click)="update(item.product._id , item.count -1 )" > - </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button [routerLink]="[ '/payment' , productInCart._id]"  class="btn-main text-capitalize fit-content m-3 py-2" > online payment </button>
+  </div>
+
+</section>
+
+<ng-template #msg  >
+  <div class="d-flex justify-content-center align-items-center ">
+    <h2 class="text-capitalize" >your cart is empty...</h2>
+  </div>
+</ng-template>

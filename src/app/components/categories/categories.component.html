@@ -1,0 +1,14 @@
+<section class="py-5">
+  <div class="row g-4">
+    <div class="col-md-4" *ngFor="let item of items">
+      <div class="product" >
+        <div>
+          <img [src]="item.image" class=" ratio-4x3 w-100 rounded-top-2 " style="height: 300px;" [alt]="item.name">
+        </div>
+        <div class="my-4">
+          <h3 class="text-main h3 text-center">{{item.name}}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

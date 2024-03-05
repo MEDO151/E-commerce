@@ -1,0 +1,14 @@
+<section class="py-5" >
+  <div class="row">
+    <div class="col-md-3" *ngFor="let brand of brands">
+      <div class="product" >
+        <div>
+          <img [src]="brand.image" class="w-100" alt="">
+        </div>
+        <div>
+          <p class="text-center text-main"> {{brand.name}} </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

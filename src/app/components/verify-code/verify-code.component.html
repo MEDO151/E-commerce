@@ -1,0 +1,9 @@
+<section class="w-75 mx-auto" >
+  <form [formGroup]="handleCode" (ngSubmit)="verifyCode()" >
+    <div >
+      <label class="text-capitalize mb-2" for="Code">Code :</label>
+      <input [(ngModel)]="Code" type="text" id="Code" class="form-control" formControlName="resetCode" placeholder="Code...">
+    </div>
+    <button class="btn-main mt-4" >verify</button>
+  </form>
+</section>

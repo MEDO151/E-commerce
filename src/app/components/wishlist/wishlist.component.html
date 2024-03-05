@@ -1,0 +1,36 @@
+<section class="py-5" *ngIf="count > 0 ;else msg" >
+
+  <div class="row m-3 rounde bg-light rounded-3">
+    <div class="m-3">
+      <h1 class="text-capitalize fs-3">my wish list</h1>
+    </div>
+    <div class="col-md-12 border-bottom" *ngFor="let item of productInWishList.data" >
+      <div class="row">
+        <div class="col-md-2">
+          <div class="p-3">
+            <img [src]="item.imageCover" class="w-100" [alt]="item.title">
+          </div>
+        </div>
+        <div class="col-md-10">
+          <div class="d-flex align-items-center justify-content-between h-100">
+            <div class="w-75">
+              <h5 >{{item.title}}</h5>
+              <p class="text-main text-capitalize m-0" > price : {{item.price | currency:" "}} EGP </p>
+              <button  (click)="delete(item.id, btnDelete)" #btnDelete class="classic-btn text-capitalize text-danger" > <i class="fa-solid fa-trash "></i> delete</button>
+            </div>
+            <div>
+              <button (click)="addToCart(item.id, add )" #add class="btn-main text-capitalize" >add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<ng-template #msg  >
+  <div class="d-flex justify-content-center align-items-center ">
+    <h2 class="text-capitalize" >yout wish list is empty...</h2>
+  </div>
+</ng-template>
