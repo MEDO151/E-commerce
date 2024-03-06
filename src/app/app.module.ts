@@ -33,6 +33,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { AllordersComponent } from './components/allorders/allorders.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { ResetPasswordComponent } from './components/reset-password/reset-passwo
     PaymentComponent,
     ForgetPasswordComponent,
     VerifyCodeComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    AllordersComponent
   ],
   imports: [
     BrowserModule,

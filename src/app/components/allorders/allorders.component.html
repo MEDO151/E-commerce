@@ -1,0 +1,19 @@
+<section>
+  <div class="bg-light p-4 rounded-3" >
+    <h1 class="fs-4 mb-5" >All Orders</h1>
+    <div class="row border-bottom mb-4" *ngFor="let item of Orders">
+      <div class="col-md-3">
+        <p> User Name : <span class="text-main" > {{item.user.name}} </span> </p>
+      </div>
+      <div class="col-md-3">
+        <p> Order Price : {{item.totalOrderPrice | currency}} </p>
+      </div>
+      <div class="col-md-3">
+        <p> Delivered : <span class="text-danger">{{item.isDelivered}}</span> </p>
+      </div>
+      <div class="col-md-3">
+        <p>Paid : <span class="text-info" >{{item.isPaid}}</span></p>
+      </div>
+    </div>
+  </div>
+</section>

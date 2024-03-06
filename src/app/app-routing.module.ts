@@ -18,6 +18,7 @@ import { PaymentComponent } from './components/payment/payment.component';
 import { ForgetPasswordComponent } from './components/forget-password/forget-password.component';
 import { VerifyCodeComponent } from './components/verify-code/verify-code.component';
 import { ResetPasswordComponent } from './components/reset-password/reset-password.component';
+import { AllordersComponent } from './components/allorders/allorders.component';
 
 const routes: Routes = [
   {path:'' , canActivate:[authGuard] , component:BlankLayoutComponent , children: [
@@ -27,6 +28,7 @@ const routes: Routes = [
     {path:"details/:id" , component: DetailsComponent , title: "Details"},
     {path:"products" , component: ProductsComponent , title: "Products"},
     {path:"payment/:id" , component: PaymentComponent , title: "Payment"},
+    {path:"allorders" , component: AllordersComponent , title: "All Orders"},
     {path:"categories" , component:CategoriesComponent , title: "Categoriese"},
     {path:"brands" , component: BrandsComponent , title: "Brands"}
   ]},
