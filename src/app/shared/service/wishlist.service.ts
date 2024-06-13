@@ -7,12 +7,13 @@ import { BehaviorSubject, Observable } from 'rxjs';
 })
 export class WishlistService {
   token: any = localStorage.getItem('token');
+  baseUrl:string = "https://ecommerce.routemisr.com/"
   constructor(private _HttpClient:HttpClient) {}
 
   wishListNumber:BehaviorSubject<number> = new BehaviorSubject(0)
 
   addToWishlist(id:string):Observable<any>{
-    return this._HttpClient.post(`https://route-ecommerce.onrender.com/api/v1/wishlist`,
+    return this._HttpClient.post(this.baseUrl + `api/v1/wishlist`,
     {
       "productId": id
     },{
@@ -24,7 +25,7 @@ export class WishlistService {
   }
 
   displayWishlist():Observable<any>{
-    return this._HttpClient.get(`https://route-ecommerce.onrender.com/api/v1/wishlist`, {
+    return this._HttpClient.get(this.baseUrl + `api/v1/wishlist`, {
       headers: {
         token:this.token
       }
@@ -32,7 +33,7 @@ export class WishlistService {
   }
 
   deleteProduct(id:string):Observable<any>{
-    return this._HttpClient.delete(`https://route-ecommerce.onrender.com/api/v1/wishlist/${id}`, {
+    return this._HttpClient.delete(this.baseUrl + `api/v1/wishlist/${id}`, {
       headers: {
         token:this.token
       }

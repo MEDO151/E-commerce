@@ -10,10 +10,10 @@ export class PaymentService {
   constructor(private _HttpClient:HttpClient) {}
 
   token:any = localStorage.getItem('token');
-
+  baseUrl:string = "https://ecommerce.routemisr.com/"
 
   ckeckout(cartId:any, details:any):Observable<any>{
-    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/orders/checkout-session/${cartId}?url=https://e-commerce-puce-five.vercel.app`,
+    return this._HttpClient.post(this.baseUrl + `api/v1/orders/checkout-session/${cartId}?url=https://e-commerce-puce-five.vercel.app`,
     {
       shippingAddress: details
     },
@@ -26,6 +26,6 @@ export class PaymentService {
   }
 
   order():Observable<any>{
-    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/orders/`)
+    return this._HttpClient.get(this.baseUrl + `api/v1/orders/`)
   }
 }

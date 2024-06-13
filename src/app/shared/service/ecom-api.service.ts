@@ -9,14 +9,14 @@ export class EcomApiService {
 
   constructor(private _HttpClient:HttpClient) {}
 
-
+  baseUrl:string = "https://ecommerce.routemisr.com/"
 
   details(id:string):Observable<any>{
-    return this._HttpClient.get(`https://route-ecommerce.onrender.com/api/v1/products/${id}`)
+    return this._HttpClient.get(this.baseUrl + `api/v1/products/${id}`)
   }
 
   getCategory():Observable<any>{
-    return this._HttpClient.get(`https://route-ecommerce.onrender.com/api/v1/categories`)
+    return this._HttpClient.get(this.baseUrl + `api/v1/categories`)
   }
 
 

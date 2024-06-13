@@ -7,15 +7,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  baseUrl:string = "https://ecommerce.routemisr.com/"
 
   constructor(private _HttpClient:HttpClient, private _Router:Router ) {  }
 
   setRegister(userData:object):Observable<any> {
-    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signup` , userData)
+    return this._HttpClient.post(this.baseUrl + `api/v1/auth/signup` , userData)
   }
 
   setlogin(userData:object):Observable<any> {
-    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/auth/signin` , userData)
+    return this._HttpClient.post(this.baseUrl + `api/v1/auth/signin` , userData)
   }
 
   logOut():void {

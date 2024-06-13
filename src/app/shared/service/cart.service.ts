@@ -12,9 +12,9 @@ export class CartService {
   cartNumber:BehaviorSubject<number> = new BehaviorSubject(0)
 
   token:any = localStorage.getItem('token');
-
+  baseUrl:string = "https://ecommerce.routemisr.com/"
   addProduct(id:string):Observable<any>{
-    return this._HttpClient.post(`https://ecommerce.routemisr.com/api/v1/cart` ,
+    return this._HttpClient.post(this.baseUrl +`api/v1/cart` ,
       {
         "productId": id
       },{
@@ -26,7 +26,7 @@ export class CartService {
   }
 
   displayProduct():Observable<any>{
-    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/cart` , {
+    return this._HttpClient.get(this.baseUrl + `api/v1/cart` , {
       headers:{
         token : this.token
       }
@@ -34,7 +34,7 @@ export class CartService {
   }
 
   deleteProduct(id:string):Observable<any>{
-    return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/cart/${id}` , {
+    return this._HttpClient.delete(this.baseUrl + `api/v1/cart/${id}` , {
       headers:{
         token : this.token
       }
@@ -42,7 +42,7 @@ export class CartService {
   }
 
   updateCart(id:string, countNumber:number ):Observable<any>{
-  return this._HttpClient.put(`https://ecommerce.routemisr.com/api/v1/cart/${id}` , {
+  return this._HttpClient.put(this.baseUrl + `api/v1/cart/${id}` , {
     "count": countNumber
 },{
   headers:{
@@ -53,7 +53,7 @@ export class CartService {
   }
 
   clearCart():Observable<any>{
-    return this._HttpClient.delete(`https://ecommerce.routemisr.com/api/v1/cart` , {
+    return this._HttpClient.delete(this.baseUrl + `api/v1/cart` , {
       headers:{
         token: this.token
       }

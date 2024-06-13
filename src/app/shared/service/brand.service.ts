@@ -6,10 +6,11 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class BrandService {
+  baseUrl:string = "https://ecommerce.routemisr.com/"
 
   constructor(private  _HttpClient:HttpClient) { }
 
   getBrands():Observable<any>{
-    return this._HttpClient.get(`https://ecommerce.routemisr.com/api/v1/brands`)
+    return this._HttpClient.get(this.baseUrl + `api/v1/brands`)
   }
 }
